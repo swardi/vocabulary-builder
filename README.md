@@ -1,11 +1,16 @@
 # Vocalbulary Builder
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+#Steps to deploy and run
+Assuming that you have node, npm and Angular-cli installed on your machine
+1) Clone project
+2) Run npm install
+3) Run ng serve
+4) In your browser  goto localhost:4200
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
 
 ## Build
 

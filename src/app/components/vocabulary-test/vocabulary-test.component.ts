@@ -31,22 +31,31 @@ export class VocabularyTestComponent {
 	}
 
 	nextWord() {
+		
+		this.checkCorrectnessAndIncrementCounters();
+		
+		this.progressValue	= Math.floor(100*(this.currentIndex+1) / this.wordList.length);
+		this.testForm.reset();
+
 		if(this.currentIndex >= this.wordList.length-1){
 			this.displayResults = true;
 			return;
 		}
-		this.wordList[this.currentIndex].enteredValue = this.meaning;
-		this.checkCorrectnessAndIncrementCounters();
 		this.currentIndex++;
-		this.progressValue	= Math.floor(100*(this.currentIndex+1) / this.wordList.length);
-		this.testForm.reset();
 	}
 
 	checkCorrectnessAndIncrementCounters(){
-		if(this.wordList[this.currentIndex].enteredValue.toLowerCase() === this.wordList[this.currentIndex].meaning.toLowerCase()){
+		if(!this.meaning || this.meaning.length==0){
+			this.inCorrectCount++;
+			this.wordList[this.currentIndex].empty=true;
+			return;
+		}
+		if(this.meaning.toLowerCase() === this.wordList[this.currentIndex].meaning.toLowerCase()){
 			this.correctCount++;
+			this.wordList[this.currentIndex].correct=true;
 		}else{
 			this.inCorrectCount++;
+			this.wordList[this.currentIndex].correct=false;
 		}
 	}
 

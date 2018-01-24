@@ -29,7 +29,7 @@
                         {{item.word}}
                     </td>
                     <td> 
-                        <i  [ngClass]="{'glyphicon-remove': item.enteredValue.length>0 && item.enteredValue.toLowerCase()!=item.meaning.toLowerCase(), 'glyphicon-ok':item.enteredValue.length>0 && item.enteredValue.toLowerCase()==item.meaning.toLowerCase(), 'glyphicon-option-horizontal': item.enteredValue.length==0}" class="glyphicon" ></i>
+                        <i  [ngClass]="{'glyphicon-remove': !item.correct, 'glyphicon-ok':item.correct, 'glyphicon-option-horizontal': item.empty}" class="glyphicon" ></i>
                     </td>
                     
                 </tr>
@@ -38,5 +38,6 @@
 
         Correct : {{correctCount}}
         In Correct : {{inCorrectCount}}
+        
     </div>
 </div>
