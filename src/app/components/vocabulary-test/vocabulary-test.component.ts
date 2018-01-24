@@ -34,7 +34,7 @@ export class VocabularyTestComponent {
 			this.displayResults = true;
 			return;
 		}
-		this.wordList[this.currentIndex].valueEntered = this.meaning;
+		this.wordList[this.currentIndex].enteredValue = this.meaning;
 		this.currentIndex++;
 		this.progressValue	= Math.floor(100*(this.currentIndex+1) / this.wordList.length);
 	}

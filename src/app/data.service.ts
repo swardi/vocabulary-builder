@@ -29,6 +29,13 @@ export class DataService {
         this.wordList.push(new Vocabulary(4, "Tschuss", "Bye"));
         this.wordList.push(new Vocabulary(5, "Jungen", "Boy"));
         this.wordList.push(new Vocabulary(6, "Kinder", "Child"));
+        this.wordList.push(new Vocabulary(7, "Katz", "Cat"));
+        this.wordList.push(new Vocabulary(8, "Hund", "Dog"));
+        this.wordList.push(new Vocabulary(9, "Sie", "She"));
+        this.wordList.push(new Vocabulary(10, "Du", "You"));
+        this.wordList.push(new Vocabulary(11, "Milch", "Milk"));
+        this.wordList.push(new Vocabulary(12, "Kartoffel", "Potato"));
+
     }
 
     search(word: string){
@@ -41,22 +48,25 @@ export class DataService {
     }
 
     loadRandomList(count: number){
-        if(count>=this.wordList.length) count = this.wordList.length-1;
+            // Make room for random number generator and avoid repeating words
+        if(count>=this.wordList.length/2) count = this.wordList.length/2;
         let randomList = [];
-        for(var i=0; i<=count; i++){
-            let index = Math.floor((Math.random() * count) + 1);
+        for(var i=0; i<=count;){
+            let index = Math.floor((Math.random() * this.wordList.length-1) + 1);
             let alreadyPresent = false;
                     //Make sure this element is not present here
                     //TODO refactor
-            for(var i=0; i<randomList.length; i++){
-                if(randomList[i].word ===  this.wordList[index].word){
+            for(var j=0; j<randomList.length; j++){
+                if(randomList[j].word ===  this.wordList[index].word){
                     alreadyPresent=true;
                 }
             }
             if(!alreadyPresent) {
                 //Copy the objects to that testing controller can add new fields and original list will remain intact.
-                randomList.push(new Vocabulary(this.wordList[index].id, this.wordList[index].word, this.wordList[index].meaning))
-            
+                var newItem = new Vocabulary(this.wordList[index].id, this.wordList[index].word, this.wordList[index].meaning);
+                newItem.enteredValue='';
+                randomList.push(newItem)
+                i++;
             }
             
         }

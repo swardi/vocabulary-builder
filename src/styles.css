@@ -2,3 +2,12 @@
 	height:50px !important;
 	width: 50% !important;
 }
+body{
+	width:100%;
+	overflow-x: hidden;
+}
+
+.wordList{
+	height:400px !important;
+	overflow-y: scroll;
+}

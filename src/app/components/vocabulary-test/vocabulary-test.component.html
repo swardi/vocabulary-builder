@@ -28,13 +28,10 @@
                     <td>
                         {{item.word}}
                     </td>
-                    <td>
-                        <i class="glyphicon glyphicon-ok" [hidden]="item.meaning==item.enteredValue"></i>
-                        <i class="glyphicon glyphicon-remove" [hidden]="item.meaning!=item.enteredValue"></i>
+                    <td> 
+                        <i  [ngClass]="{'glyphicon-remove': item.enteredValue.length>0 && item.enteredValue!=item.meaning, 'glyphicon-ok':item.enteredValue.length>0 && item.enteredValue==item.meaning, 'glyphicon-option-horizontal': item.enteredValue.length==0}" class="glyphicon" ></i>
                     </td>
-                    <td>
-                        <button (click)="deleteWord(item)"> <i class="glyphicon glyphicon-remove"></i> </button>
-                    </td>
+                    
                 </tr>
             </tbody>
         </table>
