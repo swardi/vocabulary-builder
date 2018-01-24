@@ -1,11 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {Observable} from 'rxjs/Rx'; 
-
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
 
 /**
  * Vocabulary class.
@@ -15,7 +8,7 @@ import 'rxjs/add/operator/catch';
  * @param {String} word  - The word in foreign language.
  * @param {String} meaning  - The word in English.
  */
-function Vocabulary(id, word, meaning) {
+export function Vocabulary(id, word, meaning) {
     this.id = id;
     this.word = word;
     this.meaning = meaning;
@@ -29,6 +22,12 @@ export class DataService {
     constructor() {
 
         this.wordList = [];
+        this.wordList.push(new Vocabulary(1, "Danke", "Thank you"));
+        this.wordList.push(new Vocabulary(1, "Manner", "Men"));
+        this.wordList.push(new Vocabulary(1, "Fraun", "Women"));
+        this.wordList.push(new Vocabulary(1, "Tschuss", "Bye"));
+        this.wordList.push(new Vocabulary(1, "Jungen", "Boy"));
+        this.wordList.push(new Vocabulary(1, "Kinder", "Child"));
     }
 
     search(word){
@@ -45,16 +44,17 @@ export class DataService {
     }
 
     addNewWord(word, meaning){
-        //TODO Search and return item if the item is already present in the list
+        if(this.search(word)) return;
         let newItem = new Vocabulary(this.wordList.length+1, word, meaning);
         this.wordList.push(newItem);
     }
 
     deleteWord(word){
-        this.wordList.forEach(function(item, index){
-            if(item.word === word){
-                this.wordList.splice(index);
+        for(var i=0; i<this.wordList.length; i++){
+            if(this.wordList[i].word === word){
+                this.wordList.splice(i, 1);
+                return;
             }
-        })
+        }
     }
 } 

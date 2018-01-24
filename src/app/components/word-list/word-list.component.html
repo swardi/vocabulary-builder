@@ -1,0 +1,19 @@
+<div class="col-md-12">
+    <div class="col-md-6">
+        Word
+    </div>
+    <div class="col-md-6">
+        Meaning
+    </div>
+    <div *ngFor="let item of wordList">
+        <div class="col-md-5">
+            {{item.word}}
+        </div>
+        <div class="col-md-5">
+            {{item.meaning}}
+        </div>
+        <div class="col-md-2">
+        	<button (click)="deleteWord(item)" > Delete </button>
+        </div>
+    </div>
+</div>

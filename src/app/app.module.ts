@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import {DataService} from './data.service';
 import { AsyncAwareButton } from './async-aware-button';
 import {Alert} from "./alert.component";
+import {WordListComponent} from "./components/word-list/word-list.component";
+import {InputComponent} from "./components/input/input.component";
 
 //Third party library imports
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
@@ -17,13 +19,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
   declarations: [
     AppComponent,
     AsyncAwareButton,
-    Alert
+    Alert,  WordListComponent, InputComponent
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgbModule.forRoot()
   ],
   providers: [DataService],
-  entryComponents: [Alert],
+  entryComponents: [Alert, WordListComponent, InputComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
