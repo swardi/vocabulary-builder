@@ -40,7 +40,7 @@ export class DataService {
 
     search(word: string){
         for(var i=0; i<this.wordList.length; i++){
-            if(this.wordList[i].word === word){
+            if(this.wordList[i].word.toLowerCase() === word.toLowerCase()){
                 return this.wordList[i];
             }
         }
@@ -57,7 +57,7 @@ export class DataService {
                     //Make sure this element is not present here
                     //TODO refactor
             for(var j=0; j<randomList.length; j++){
-                if(randomList[j].word ===  this.wordList[index].word){
+                if(randomList[j].word.toLowerCase() ===  this.wordList[index].word.toLowerCase()){
                     alreadyPresent=true;
                 }
             }
@@ -85,7 +85,7 @@ export class DataService {
 
     deleteWord(word : string){
         for(var i=0; i<this.wordList.length; i++){
-            if(this.wordList[i].word === word){
+            if(this.wordList[i].word.toLowerCase() === word.toLowerCase()){
                 this.wordList.splice(i, 1);
                 return;
             }

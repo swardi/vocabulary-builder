@@ -18,7 +18,8 @@ export class VocabularyTestComponent {
 	meaning : string = "";
 	progressValue : number = 0;
 	displayResults : boolean = false;
-
+	correctCount:number = 0;
+	inCorrectCount:number = 0;
   	constructor(private dataService: DataService, private modalService: NgbModal) {
   		
   	}
@@ -35,8 +36,18 @@ export class VocabularyTestComponent {
 			return;
 		}
 		this.wordList[this.currentIndex].enteredValue = this.meaning;
+		this.checkCorrectnessAndIncrementCounters();
 		this.currentIndex++;
 		this.progressValue	= Math.floor(100*(this.currentIndex+1) / this.wordList.length);
+		this.testForm.reset();
+	}
+
+	checkCorrectnessAndIncrementCounters(){
+		if(this.wordList[this.currentIndex].enteredValue.toLowerCase() === this.wordList[this.currentIndex].meaning.toLowerCase()){
+			this.correctCount++;
+		}else{
+			this.inCorrectCount++;
+		}
 	}
 
 }
