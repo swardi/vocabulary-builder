@@ -1,0 +1,42 @@
+<div [hidden]="displayResults">
+    <div class="col-md-4">
+        <ngb-progressbar type="info" [value]="progressValue" [showValue]="true" [striped]="true"></ngb-progressbar>
+    </div>
+    <div class="jumbotron">
+        <h1 class="text-center"> {{wordList[currentIndex].word}} </h1>
+    </div>
+    <div class="col-md-12 text-center">
+        <form [formGroup]="testForm" id="testForm" class="form-inline">
+            <input type="text" [(ngModel)]="meaning" placeholder="Meaning" formControlName="meaning" class="form-control" />
+            <button type="submit" class="btn btn-primary" (click)="nextWord()">Next</button>
+        </form>
+    </div>
+</div>
+<div [hidden]="!displayResults">
+    <div class="table-responsive col-md-10">
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>
+                    Word
+                </th>
+                <th>
+                    Status
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of wordList">
+                    <td>
+                        {{item.word}}
+                    </td>
+                    <td>
+                        <i class="glyphicon glyphicon-ok" [hidden]="item.meaning==item.enteredValue"></i>
+                        <i class="glyphicon glyphicon-remove" [hidden]="item.meaning!=item.enteredValue"></i>
+                    </td>
+                    <td>
+                        <button (click)="deleteWord(item)"> <i class="glyphicon glyphicon-remove"></i> </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

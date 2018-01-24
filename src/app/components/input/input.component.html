@@ -2,11 +2,11 @@
 <div class="col-md-12">
 
 	<div class="col-md-6">
-		<input type="text" [(ngModel)]="word" formControlName="word"/>
+		<input type="text" [(ngModel)]="word" formControlName="word" placeholder="Word"/>
 	</div>
 
 	<div class="col-md-6">
-		<input type="text" [(ngModel)]="meaning" (keypress)="saveIfEnter($event)" formControlName="meaning"/>
+		<input type="text" [(ngModel)]="meaning" (keypress)="saveIfEnter($event)" formControlName="meaning" placeholder="Meaning"/>
 	</div>
 
 </div>

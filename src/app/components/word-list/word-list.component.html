@@ -1,19 +1,28 @@
-<div class="col-md-12">
-    <div class="col-md-6">
-        Word
-    </div>
-    <div class="col-md-6">
-        Meaning
-    </div>
-    <div *ngFor="let item of wordList">
-        <div class="col-md-5">
-            {{item.word}}
-        </div>
-        <div class="col-md-5">
-            {{item.meaning}}
-        </div>
-        <div class="col-md-2">
-        	<button (click)="deleteWord(item)" > Delete </button>
-        </div>
-    </div>
+<div class="table-responsive col-md-10">
+    <table class="table table-striped table-hover">
+        <thead>
+            <th>
+                Word
+            </th>
+            <th>
+                Meaning
+            </th>
+            <th>
+                Action
+            </th>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let item of wordList">
+                <td>
+                        {{item.word}}
+                </td>
+                <td>
+                        {{item.meaning}}
+                </td>
+                <td>
+                        <button (click)="deleteWord(item)"> <i  class="glyphicon glyphicon-remove"></i> </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
